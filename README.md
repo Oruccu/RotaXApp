@@ -1,50 +1,24 @@
-# Welcome to your Expo app 👋
+# Tatil Rotası Uygulaması 📍✈️
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Uygulama Hakkında 🗺️
+Tatil Rotası uygulaması, seyahat planlamayı kolaylaştırmak için tasarlanmıştır. Harita üzerinde destinasyonlarınızı seçebilir, rota oluşturabilir ve bu rotayı PDF olarak kaydedebilirsiniz. Ayrıca, kullanıcılar arasında rota paylaşımı ve deneyim alışverişi yapılabilir.
 
-## Get started
+## Neden Bu Uygulama Lazım? 🤔
 
-1. Install dependencies
+- **Planlama Kolaylığı:** Seyahat öncesinde tüm rotanızı organize ederek zaman kazanın.
+- **Kişisel Deneyimler:** Diğer kullanıcıların paylaştığı deneyimlerden ilham alın.
+- **Paylaşım ve Etkileşim:** Kendi rotalarınızı paylaşarak topluluğa katkıda bulunun.
 
-   ```bash
-   npm install
-   ```
+## Özellikler 🌟
 
-2. Start the app
+- **Harita Üzerinde Destinasyon Seçimi:** İstediğiniz yerleri harita üzerinden kolayca işaretleyin.
+- **Rota Oluşturma:** Belirlediğiniz destinasyonlara uygun bir seyahat planı oluşturun.
+- **PDF İndir:** Planınızı bir PDF dosyası olarak kaydedin.
+- **Topluluk Etkileşimi:** Rotalarınızı diğer kullanıcılarla paylaşın, yorum yapın ve deneyimlerinizi yazın.
 
-   ```bash
-    npx expo start
-   ```
+## Tasarım Görselleri 🎨
+Tasarım detaylarını görmek için Figma bağlantısını ziyaret edin: [Figma Tasarımı](https://www.figma.com/design/cxyT1xSlBXOOCOkgXfwxEx/Untitled?node-id=4-29&t=ydrM3EgOapl3n9L1-1)
 
-In the output, you'll find options to open the app in a
+## Durum 🚧
+Uygulama hâlâ geliştirme aşamasındadır. Yeni özellikler ve iyileştirmeler yakında eklenecektir!
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
