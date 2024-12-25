@@ -19,6 +19,13 @@ Tatil Rotası uygulaması, seyahat planlamayı kolaylaştırmak için tasarlanm�
 ## Tasarım Görselleri 🎨
 Tasarım detaylarını görmek için Figma bağlantısını ziyaret edin: [Figma Tasarımı](https://www.figma.com/design/cxyT1xSlBXOOCOkgXfwxEx/Untitled?node-id=4-29&t=ydrM3EgOapl3n9L1-1)
 
+# Auth Page
+
+<div style="display: flex; gap: 10px; align-items: center;">
+  <img src="/app/assets/screens/RotaX.png" alt="Context Screen" style="width: 160px; height: auto;">
+  <img src="/app/assets/screens/Create.png" alt="Log In Screen" style="width: 160px; height: auto;">
+</div>
+
 ## Durum 🚧
 Uygulama hâlâ geliştirme aşamasındadır. Yeni özellikler ve iyileştirmeler yakında eklenecektir!
 
