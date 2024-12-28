@@ -18,4 +18,17 @@ export default {
       fontWeight:'bold'
     },
   }),
+  Settings: StyleSheet.create({
+    container:{
+      margin:10,
+      borderWidth:1,
+      padding:10,
+      borderRadius:15,
+      borderColor:Color.IconColor
+    },
+    button:{
+      color:Color.IconColor
+    }
+  }),
+  
 };

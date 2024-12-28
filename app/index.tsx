@@ -3,9 +3,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { FontAwesome, AntDesign } from "@expo/vector-icons";
 import Color from "@/app/styles/Color";
-import IconAntDesing from "@/app/components/Icons/IconExpo/IconAntDesing";
-import IconFontAwesome from "@/app/components/Icons/IconExpo/IconFontAwesome";
 import IconImage from "@/app/components/Icons/IconImage";
+import { Provider } from "react-redux";
+import store from "./hooks/Store";
 
 //--------------Auth(Stack Navigation Screen)--------------
 import Intro from "@/app/page/auth/intro";
@@ -40,8 +40,8 @@ function MainTab() {
           backgroundColor: "#fff",
           height: 80,
           paddingTop: 10,
-          borderTopLeftRadius:40,
-          borderTopRightRadius:40,
+          borderTopLeftRadius: 40,
+          borderTopRightRadius: 40,
           paddingBottom: 5,
           shadowColor: "#000",
           shadowOffset: { width: 0, height: -4 },
@@ -64,9 +64,9 @@ function MainTab() {
         options={{
           tabBarIcon: ({ focused }) => (
             <IconImage
-            icon={focused ? "homeActive" : "homePassive"}
-            theme={"TabBar"}
-          />
+              icon={focused ? "homeActive" : "homePassive"}
+              theme={"TabBar"}
+            />
           ),
         }}
       />
@@ -77,9 +77,9 @@ function MainTab() {
           tabBarLabel: "RotaxCreate",
           tabBarIcon: ({ focused }) => (
             <IconImage
-            icon={focused ? "mapActive" : "mapPassive"}
-            theme={"TabBar"}
-          />
+              icon={focused ? "mapActive" : "mapPassive"}
+              theme={"TabBar"}
+            />
           ),
         }}
       />
@@ -103,9 +103,9 @@ function MainTab() {
           tabBarLabel: "Setting",
           tabBarIcon: ({ focused }) => (
             <IconImage
-            icon={focused ? "settingsActive" : "settingsPassive"}
-            theme={"TabBar"}
-          />
+              icon={focused ? "settingsActive" : "settingsPassive"}
+              theme={"TabBar"}
+            />
           ),
         }}
       />
@@ -138,26 +138,28 @@ function RotaxStack() {
 
 export default function App() {
   return (
-    <Stack.Navigator>
-      {/* Main App Screens */}
-      <Stack.Screen
-        name="Main"
-        component={MainTab}
-        options={{ headerShown: false }}
-      />
+    <Provider store={store}>
+      <Stack.Navigator>
+        {/* Main App Screens */}
+        <Stack.Screen
+          name="Main"
+          component={MainTab}
+          options={{ headerShown: false }}
+        />
 
-      <Stack.Screen
-        name="Auth"
-        component={AuthStack}
-        options={{ headerShown: false }}
-      />
+        <Stack.Screen
+          name="Auth"
+          component={AuthStack}
+          options={{ headerShown: false }}
+        />
 
-      {/* Rotax Details */}
-      <Stack.Screen
-        name="RotaxStack"
-        component={RotaxStack}
-        options={{ headerShown: false }}
-      />
-    </Stack.Navigator>
+        {/* Rotax Details */}
+        <Stack.Screen
+          name="RotaxStack"
+          component={RotaxStack}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    </Provider>
   );
 }

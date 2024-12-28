@@ -1,10 +1,5 @@
-import { NavigationIndependentTree } from "@react-navigation/native";
-import App from "./index";
+import { Slot } from "expo-router";
 
 export default function RootLayout() {
-  return (
-    <NavigationIndependentTree>
-      <App />
-    </NavigationIndependentTree>
-  );
+  return <Slot />;
 }
