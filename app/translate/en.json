@@ -5,5 +5,16 @@
   "light": "Light",
   "turkish": "Turkish",
   "english": "English",
-  "german": "German"
+  "german": "German",
+
+  "myRotaX": "RotaX",
+  "rotaxNamePlaceholder": "RotaX Name e.g., Italy Traveler",
+  "accommodation": "Accommodation",
+  "city": "City",
+  "district": "District",
+  "day": "Day",
+  "increase": "Increase",
+  "decrease": "Decrease",
+  "whichDay": "Which day are you planning?"
+  
 }

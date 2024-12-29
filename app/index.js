@@ -1,11 +1,10 @@
-import { Text, View } from "react-native";
+import React, { useEffect, useState } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { FontAwesome, AntDesign } from "@expo/vector-icons";
-import Color from "@/app/styles/Color";
-import IconImage from "@/app/components/Icons/IconImage";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import store from "./hooks/Store";
+import { LightModeColors, DarkModeColors } from "@/app/styles/Color";
+import IconImage from "@/app/components/Icons/IconImage";
 
 //--------------Auth(Stack Navigation Screen)--------------
 import Intro from "@/app/page/auth/intro";
@@ -30,30 +29,24 @@ const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 function MainTab() {
+  const { mode } = useSelector((state) => state.settings);
+  const [theme, setTheme] = useState(mode === "light" ? LightModeColors : DarkModeColors);
+
+
+  const TabbackgroundColor = mode === 'Dark' ? DarkModeColors.Background : LightModeColors.Background;
+
   return (
     <Tab.Navigator
+      key={theme.Background} 
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: Color.Primary,
-        tabBarInactiveTintColor: Color.IconColor,
+        tabBarActiveTintColor: theme.Primary,
+        tabBarInactiveTintColor: theme.IconColor,
         tabBarStyle: {
-          backgroundColor: "#fff",
+          backgroundColor: TabbackgroundColor,
           height: 80,
           paddingTop: 10,
-          borderTopLeftRadius: 40,
-          borderTopRightRadius: 40,
           paddingBottom: 5,
-          shadowColor: "#000",
-          shadowOffset: { width: 0, height: -4 },
-          shadowOpacity: 0.4,
-          shadowRadius: 10,
-          elevation: 5,
-        },
-        tabBarIconStyle: {
-          marginBottom: -5,
-        },
-        tabBarItemStyle: {
-          paddingHorizontal: 10,
         },
         tabBarShowLabel: false,
       }}
@@ -146,14 +139,11 @@ export default function App() {
           component={MainTab}
           options={{ headerShown: false }}
         />
-
         <Stack.Screen
           name="Auth"
           component={AuthStack}
           options={{ headerShown: false }}
         />
-
-        {/* Rotax Details */}
         <Stack.Screen
           name="RotaxStack"
           component={RotaxStack}

@@ -1,21 +1,27 @@
-import { SafeAreaView, Text, View } from 'react-native';
 import React from 'react';
+import { SafeAreaView, Text, View } from 'react-native';
 import Button from '@/app/components/Button';
 import Title from '@/app/components/Title';
-import styles from './SettingsStyles';
 import { useDispatch, useSelector } from 'react-redux';
-import { setLanguage, setMode } from '@/app/hooks/settingsSlice.js';
+import { setLanguage, setMode } from '@/app/hooks/settingsSlice';
 import { useTranslation } from 'react-i18next';
-
+import createStyles from "./SettingsStyles";
+import { LightModeColors, DarkModeColors } from "@/app/styles/Color";
 
 const Settings = () => {
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
-  const { language, mode } = useSelector((state) => state.settings);
+  const { mode } = useSelector((state) => state.settings);
+
+  // Tema seçimi
+  const theme = mode === "Dark" ? DarkModeColors : LightModeColors;
+
+  // Dinamik styles
+  const styles = createStyles(theme);
 
   const handleLanguageChange = (lang) => {
-    i18n.changeLanguage(lang); 
-    dispatch(setLanguage(lang)); 
+    i18n.changeLanguage(lang);
+    dispatch(setLanguage(lang));
   };
 
   const handleModeChange = (mode) => {
@@ -23,13 +29,13 @@ const Settings = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <Title title={"RotaX"} />
       <View style={styles.line} />
-
+      
       <Text style={styles.languageText}>{t("language")}</Text>
       <View style={styles.languageContainer}>
-        <Button
+      <Button
           ButtonName={t("turkish")}
           theme={"Settings"}
           onPress={() => handleLanguageChange('tr')} // 'tr' kodu
@@ -48,7 +54,7 @@ const Settings = () => {
 
       <Text style={styles.mode}>{t("mode")}</Text>
       <View style={styles.modeContainer}>
-        <Button
+      <Button
           ButtonName={t("dark")}
           theme={"Settings"}
           onPress={() => handleModeChange('Dark')}

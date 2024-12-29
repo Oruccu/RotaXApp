@@ -5,6 +5,16 @@
     "light": "Aydınlık",
     "turkish": "Türkçe",
     "english": "İngilizce",
-    "german": "Almanca"
+    "german": "Almanca",
+
+    "myRotaX": "RotaX",
+    "rotaxNamePlaceholder": "RotaX Adı Örn. İtalya Gezgini",
+    "accommodation": "Konaklama",
+    "city": "Şehir",
+    "district": "Bölge",
+    "day": "Gün",
+    "increase": "Arttır",
+    "decrease": "Azalt",
+    "whichDay": "Hangi günü planlıyorsunuz?"
   }
   

@@ -9,9 +9,10 @@ const styles = StyleSheet.create({
         height: 50,
     },
     text: {
-        fontSize: 30,
+        fontSize: 32,
         color: Color.Primary,
         fontWeight: 'condensed',
+
     }
 });
 

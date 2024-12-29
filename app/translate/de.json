@@ -1,10 +1,19 @@
 {
-    "language": "Sprache",
-    "mode": "Modus",
-    "dark": "Dunkel",
-    "light": "Hell",
-    "turkish": "Türkisch",
-    "english": "Englisch",
-    "german": "Deutsch"
-  }
-  
+  "language": "Sprache",
+  "mode": "Modus",
+  "dark": "Dunkel",
+  "light": "Hell",
+  "turkish": "Türkisch",
+  "english": "Englisch",
+  "german": "Deutsch",
+
+  "myRotaX": "RotaX",
+  "rotaxNamePlaceholder": "RotaX-Name z. B. Italien-Reisender",
+  "accommodation": "Unterkunft",
+  "city": "Stadt",
+  "district": "Bezirk",
+  "day": "Tag",
+  "increase": "Erhöhen",
+  "decrease": "Verringern",
+  "whichDay": "Welchen Tag planen Sie?"
+}
