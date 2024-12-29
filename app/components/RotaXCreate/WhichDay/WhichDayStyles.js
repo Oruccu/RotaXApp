@@ -1,7 +1,8 @@
 import { StyleSheet } from "react-native";
 import { DarkModeColors, LightModeColors } from "@/app/styles/Color";
 
-export const getStyles = (mode) =>
+// Default export
+const getStyles = (mode) =>
   StyleSheet.create({
     container: {
       flexDirection: "row",
@@ -26,5 +27,8 @@ export const getStyles = (mode) =>
       fontWeight: "bold",
       marginHorizontal: 10,
       marginTop: 5,
+      color:mode === "dark" ? DarkModeColors.TextColor : LightModeColors.TextColor, 
     },
   });
+
+export default getStyles;

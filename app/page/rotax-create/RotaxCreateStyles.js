@@ -5,6 +5,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 20,
   },
+  plusContainer:{
+    justifyContent:'center',
+    alignItems:'center',
+    marginBottom:20,
+  }
 
 });
 export default styles;

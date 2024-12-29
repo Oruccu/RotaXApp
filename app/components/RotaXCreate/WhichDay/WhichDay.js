@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import Button from '@/app/components/Button'
-import { getStyles } from "./WhichDayStyles";
+import  getStyles  from "./WhichDayStyles";
 import { useTranslation } from "react-i18next";
 import { useSelector } from 'react-redux';
 
