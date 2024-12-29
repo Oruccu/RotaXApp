@@ -28,7 +28,7 @@ Tasarım detaylarını görmek için Figma bağlantısını ziyaret edin: [Figma
   
 </div>
 
-# Settings Page Dark Mode and Language
+## Settings Page Dark Mode and Language
 <div style="display: flex; gap: 10px; align-items: center;">
   <img src="/app/assets/screens/SettingsDark.png" alt="Log In Screen" style="width: 160px; height: auto;">
   <img src="/app/assets/screens/SettingsTurkish.png" alt="Log In Screen" style="width: 160px; height: auto;">
