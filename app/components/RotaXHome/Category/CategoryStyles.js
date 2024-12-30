@@ -18,6 +18,9 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#333',
     },
+    container:{
+        marginTop:20
+    }
 });
 
 export default styles

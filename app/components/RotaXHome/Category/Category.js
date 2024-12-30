@@ -1,10 +1,10 @@
-import { View, Text, FlatList ,TouchableOpacity } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import React from 'react'
 import IconImage from '@/app/components/Icons/IconImage'
 import styles from './CategoryStyles'
 
 const categories = [
-  { id: '1', name: 'Beach', icon: "beach"},
+  { id: '1', name: 'Beach', icon: "beach" },
   { id: '2', name: 'Mountain', icon: "mountain" },
   { id: '3', name: 'Desert', icon: "desert" },
   { id: '4', name: 'Camping', icon: "camping" },
@@ -15,21 +15,23 @@ const categories = [
 ]
 const Category = () => {
   const renderItem = ({ item }) => (
-      <TouchableOpacity style={styles.itemContainer}>
-          <IconImage icon={item.icon} theme="Category"/>
-          <Text style={styles.name}>{item.name}</Text>
-      </TouchableOpacity>
+    <TouchableOpacity style={styles.itemContainer}>
+      <View style={styles.container}>
+        <IconImage icon={item.icon} theme="Category" />
+        <Text style={styles.name}>{item.name}</Text>
+      </View>
+    </TouchableOpacity>
   );
 
   return (
-      <FlatList
-          data={categories}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-          horizontal // Yatay kaydırma
-          showsHorizontalScrollIndicator={false} // Kaydırma çubuğunu gizle
-          contentContainerStyle={styles.listContainer}
-      />
+    <FlatList
+      data={categories}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id}
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      contentContainerStyle={styles.listContainer}
+    />
   );
 };
 

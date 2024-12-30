@@ -11,7 +11,11 @@ const SearchBar = () => {
   return (
     <View style={styles.container}>
       <View style={styles.searchContainer}>
-        <Input placeholder="Rotax Search" onChangeText={setSearch} value={search} theme={"Auth"} />
+        <Input 
+        placeholder="Rotax Search" 
+        onChangeText={setSearch} 
+        value={search} 
+        theme={"RotaX"} />
       </View>
       <View style={styles.innerContainer}>
         <View style={styles.searchIcon}>

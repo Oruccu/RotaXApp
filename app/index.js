@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Provider, useSelector } from "react-redux";
@@ -32,12 +33,10 @@ function MainTab() {
   const { mode } = useSelector((state) => state.settings);
   const [theme, setTheme] = useState(mode === "light" ? LightModeColors : DarkModeColors);
 
-
-  const TabbackgroundColor = mode === 'Dark' ? DarkModeColors.Background : LightModeColors.Background;
+  const TabbackgroundColor = mode === "Dark" ? DarkModeColors.Background : LightModeColors.Background;
 
   return (
     <Tab.Navigator
-      key={theme.Background} 
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: theme.Primary,
@@ -56,10 +55,7 @@ function MainTab() {
         component={Home}
         options={{
           tabBarIcon: ({ focused }) => (
-            <IconImage
-              icon={focused ? "homeActive" : "homePassive"}
-              theme={"TabBar"}
-            />
+            <IconImage icon={focused ? "homeActive" : "homePassive"} theme={"TabBar"} />
           ),
         }}
       />
@@ -67,12 +63,8 @@ function MainTab() {
         name="RotaxCreate"
         component={RotaxCreate}
         options={{
-          tabBarLabel: "RotaxCreate",
           tabBarIcon: ({ focused }) => (
-            <IconImage
-              icon={focused ? "mapActive" : "mapPassive"}
-              theme={"TabBar"}
-            />
+            <IconImage icon={focused ? "mapActive" : "mapPassive"} theme={"TabBar"} />
           ),
         }}
       />
@@ -80,12 +72,8 @@ function MainTab() {
         name="RotaxUser"
         component={RotaxUser}
         options={{
-          tabBarLabel: "RotaxUser",
           tabBarIcon: ({ focused }) => (
-            <IconImage
-              icon={focused ? "tabActive" : "tabPassive"}
-              theme={"TabBar"}
-            />
+            <IconImage icon={focused ? "tabActive" : "tabPassive"} theme={"TabBar"} />
           ),
         }}
       />
@@ -93,12 +81,8 @@ function MainTab() {
         name="Settings"
         component={Settings}
         options={{
-          tabBarLabel: "Setting",
           tabBarIcon: ({ focused }) => (
-            <IconImage
-              icon={focused ? "settingsActive" : "settingsPassive"}
-              theme={"TabBar"}
-            />
+            <IconImage icon={focused ? "settingsActive" : "settingsPassive"} theme={"TabBar"} />
           ),
         }}
       />
@@ -112,7 +96,7 @@ function AuthStack() {
       <Stack.Screen name="intro" component={Intro} />
       <Stack.Screen name="singin" component={SingIn} />
       <Stack.Screen name="singup" component={SingUp} />
-      <Stack.Screen name="reserpassword" component={ResetPassword} />
+      <Stack.Screen name="resetpassword" component={ResetPassword} />
       <Stack.Screen name="verifycode" component={VerifyCode} />
     </Stack.Navigator>
   );
@@ -132,24 +116,26 @@ function RotaxStack() {
 export default function App() {
   return (
     <Provider store={store}>
-      <Stack.Navigator>
-        {/* Main App Screens */}
-        <Stack.Screen
-          name="Main"
-          component={MainTab}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Auth"
-          component={AuthStack}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="RotaxStack"
-          component={RotaxStack}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
+      <NavigationContainer>
+        <Stack.Navigator>
+          {/* Main App Screens */}
+          <Stack.Screen
+            name="Main"
+            component={MainTab}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Auth"
+            component={AuthStack}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="RotaxStack"
+            component={RotaxStack}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
     </Provider>
   );
 }

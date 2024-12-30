@@ -10,6 +10,8 @@ const styles = StyleSheet.create({
     },
     searchContainer: {
         flex: 1,  
+        height:100,
+        justifyContent:'center'
     },
     innerContainer: {
         flexDirection: 'row', 
