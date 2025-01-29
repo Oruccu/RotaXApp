@@ -1,21 +1,24 @@
 {
-    "language": "Dil",
-    "mode": "Mod",
-    "dark": "Karanlık",
-    "light": "Aydınlık",
-    "turkish": "Türkçe",
-    "english": "İngilizce",
-    "german": "Almanca",
+  "language": "Dil",
+  "mode": "Mod",
+  "dark": "Karanlık",
+  "light": "Aydınlık",
+  "turkish": "Türkçe",
+  "english": "İngilizce",
+  "german": "Almanca",
 
-    "myRotaX": "RotaX",
-    "rotaxNamePlaceholder": "RotaX Adı Örn. İtalya Gezgini",
-    "accommodation": "Konaklama",
-    "city": "Şehir",
-    "district": "Bölge",
-    "day": "Gün",
-    "increase": "Arttır",
-    "decrease": "Azalt",
-    "whichDay": "Hangi günü planlıyorsunuz?",
-    "transportation": "Ulaşım"
-  }
-  
+  "myRotaX": "RotaX",
+  "rotaxNamePlaceholder": "RotaX Adı Örn. İtalya Gezgini",
+  "accommodation": "Konaklama",
+  "city": "Şehir",
+  "district": "Bölge",
+  "day": "Gün",
+  "increase": "Arttır",
+  "decrease": "Azalt",
+  "whichDay": "Hangi günü planlıyorsunuz?",
+  "transportation": "Ulaşım",
+
+  "selectLocationOnMap": "Haritadan Konum Seç",
+  "planList": "Plan Listesi",
+  "placeName": "Yer Adı"
+}

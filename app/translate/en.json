@@ -16,5 +16,9 @@
   "increase": "Increase",
   "decrease": "Decrease",
   "whichDay": "Which day are you planning?",
-  "transportation": "Transportation"
+  "transportation": "Transportation",
+
+  "selectLocationOnMap": "Select Location on Map",
+  "planList": "Plan List",
+  "placeName":"Place Name"
 }

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
+const MapsModalStyles = StyleSheet.create({
   overlay: {
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -8,12 +8,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modalContent: {
-    width: '90%', // Modal genişliği
-    height: '70%', // Modal yüksekliği
+    width: '90%',
+    height: '70%',
     backgroundColor: 'white',
     borderRadius: 15,
     overflow: 'hidden',
-    elevation: 5,
+    elevation: 5, 
   },
   map: {
     flex: 1,
@@ -27,6 +27,17 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingHorizontal: 10,
     borderRadius: 5,
+    zIndex: 2, 
+  },
+  currentAddress: {
+    position: 'absolute',
+    top: 60,
+    left: 10,
+    right: 10,
+    backgroundColor: 'white',
+    paddingVertical: 5,
+    paddingHorizontal: 8,
+    borderRadius: 5,
     zIndex: 2,
   },
   confirmButton: {
@@ -37,6 +48,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#007AFF',
     padding: 10,
     borderRadius: 5,
+    zIndex: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   closeButton: {
     position: 'absolute',
@@ -46,12 +60,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF3B30',
     padding: 10,
     borderRadius: 5,
+    zIndex: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   buttonText: {
-    textAlign: 'center',
     color: 'white',
     fontWeight: 'bold',
   },
 });
 
-export default styles;
+export default MapsModalStyles;
