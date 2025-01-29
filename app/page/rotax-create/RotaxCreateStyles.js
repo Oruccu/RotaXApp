@@ -24,8 +24,7 @@ export default StyleSheet.create({
     fontWeight: 'bold',
   },
   planListTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 20,
     marginTop: 20,
     color: Color.IconColor,
     textAlign: 'center',

@@ -20,5 +20,6 @@
 
   "selectLocationOnMap": "Haritadan Konum Seç",
   "planList": "Plan Listesi",
-  "placeName": "Yer Adı"
+  "placeName": "Yer Adı",
+  "save":"Kaydet"
 }

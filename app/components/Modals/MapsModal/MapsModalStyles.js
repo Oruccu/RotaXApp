@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import Color from '../../../styles/Color';
 
 const MapsModalStyles = StyleSheet.create({
   overlay: {
@@ -27,41 +28,27 @@ const MapsModalStyles = StyleSheet.create({
     backgroundColor: 'white',
     paddingHorizontal: 10,
     borderRadius: 5,
-    zIndex: 2, 
-  },
-  currentAddress: {
-    position: 'absolute',
-    top: 60,
-    left: 10,
-    right: 10,
-    backgroundColor: 'white',
-    paddingVertical: 5,
-    paddingHorizontal: 8,
-    borderRadius: 5,
     zIndex: 2,
   },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    paddingVertical: 10,
+    backgroundColor: '#f2f2f2',
+  },
   confirmButton: {
-    position: 'absolute',
-    bottom: 50,
-    left: 20,
-    right: 20,
-    backgroundColor: '#007AFF',
+    backgroundColor: Color.Primary,
     padding: 10,
     borderRadius: 5,
-    zIndex: 3,
-    justifyContent: 'center',
+    minWidth: '40%',
     alignItems: 'center',
   },
   closeButton: {
-    position: 'absolute',
-    bottom: 10,
-    left: 20,
-    right: 20,
     backgroundColor: '#FF3B30',
     padding: 10,
     borderRadius: 5,
-    zIndex: 3,
-    justifyContent: 'center',
+    minWidth: '40%',
     alignItems: 'center',
   },
   buttonText: {

@@ -8,10 +8,11 @@ import {
   Text,
   TouchableOpacity
 } from 'react-native';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { db } from '@/app/config/firebase';
+import { collection, addDoc } from 'firebase/firestore';
 
-// Güncellenmiş styles dosyası
 import styles from './RotaxCreateStyles';
 
 import Title from '@/app/components/Title';
@@ -24,14 +25,12 @@ import { DarkModeColors, LightModeColors } from '../../styles/Color';
 const RotaxCreate = () => {
   const { t } = useTranslation();
   const mode = useSelector((state) => state.settings?.mode?.toLowerCase()) || 'light';
-
   const [rotaX, setRotaX] = useState('');
   const [accommodation, setAccommodation] = useState('');
   const [city, setCity] = useState('');
   const [district, setDistrict] = useState('');
 
   const [day, setDay] = useState(1);
-
   const [vacations, setVacations] = useState([]);
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -40,7 +39,7 @@ const RotaxCreate = () => {
   const Increase = () => setDay(day + 1);
   const Decrease = () => day > 1 && setDay(day - 1);
 
-  const hangleTouchMaps = () => {
+  const handleTouchMaps = () => {
     setModalVisible(true);
   };
 
@@ -54,9 +53,36 @@ const RotaxCreate = () => {
         location: location,
       },
     ]);
-
     setSelectedLocation(location);
     setModalVisible(false);
+  };
+
+  const handleSaveToFirebase = async () => {
+    try {
+      const payload = {
+        rotaXName: rotaX || '',
+        accommodation: accommodation || '',
+        city: city || '',
+        district: district || '',
+        vacationPlan: vacations || [],
+        createdAt: new Date(),
+      };
+
+      const docRef = await addDoc(collection(db, 'rotaxPlans'), payload);
+      console.log('Document added. ID:', docRef.id);
+      alert('Data saved successfully!');
+      setRotaX('');
+      setAccommodation('');
+      setCity('');
+      setDistrict('');
+      setDay(1);
+      setVacations([]);
+      setSelectedLocation(null);
+
+    } catch (error) {
+      console.error('Error occurred while adding data to Firestore:', error);
+      alert('Failed to save data.');
+    }
   };
 
   return (
@@ -76,11 +102,10 @@ const RotaxCreate = () => {
         style={{ flex: 1 }}
       >
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
-          
-          <Title title={t("myRotaX")} />
+          <Title title={t('myRotaX')} />
 
           <Input
-            placeholder={t("rotaxNamePlaceholder")}
+            placeholder={t('rotaxNamePlaceholder')}
             theme="RotaX"
             onChangeText={setRotaX}
             value={rotaX}
@@ -94,48 +119,58 @@ const RotaxCreate = () => {
           />
 
           <Input
-            placeholder={t("accommodation")}
+            placeholder={t('accommodation')}
             theme="RotaX"
             onChangeText={setAccommodation}
             value={accommodation}
           />
 
           <Input
-            placeholder={t("placeName")}
+            placeholder={t('placeName')}
             theme="RotaX"
             onChangeText={setCity}
             value={city}
           />
 
           <Input
-            placeholder={t("district")}
+            placeholder={t('district')}
             theme="RotaX"
             onChangeText={setDistrict}
             value={district}
           />
 
-          <TouchableOpacity style={styles.mapButton} onPress={hangleTouchMaps}>
+          <TouchableOpacity style={styles.mapButton} onPress={handleTouchMaps}>
             <Text style={styles.mapButtonText}>
-              {t("selectLocationOnMap") || 'Select Location on Map'}
+              {t('selectLocationOnMap') || 'Select Location on Map'}
             </Text>
           </TouchableOpacity>
 
           <Text style={styles.planListTitle}>
-            {t("planList") || 'Plan List:'}
+            {t('planList') || 'Plan List:'}
           </Text>
 
           {vacations.map((item) => (
             <View key={item.id} style={styles.locationItem}>
               <Text style={styles.locationDayText}>
-                {item.day}. Gün
+                {item.day}. Day
               </Text>
-              <Text>Yer: {item.placeName}</Text>
+              <Text>Place: {item.placeName}</Text>
               <Text>
-                Konum: {item.location?.latitude?.toFixed(5)}, {item.location?.longitude?.toFixed(5)}
+                Location: {item.location?.latitude?.toFixed(5)}, {item.location?.longitude?.toFixed(5)}
               </Text>
             </View>
           ))}
 
+          {vacations.length > 0 && (
+            <TouchableOpacity
+              onPress={handleSaveToFirebase}
+              style={styles.mapButton}
+            >
+              <Text style={styles.mapButtonText}>
+                {t('save') || 'Save'}
+              </Text>
+            </TouchableOpacity>
+          )}
         </ScrollView>
       </KeyboardAvoidingView>
 

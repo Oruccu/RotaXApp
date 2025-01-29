@@ -15,7 +15,6 @@ const MapsModal = ({ modalVisible, closeModal, handleLocationSelect, selectedLoc
 
   const mapRef = useRef(null);
 
-  // Nominatim ile adres arama
   const handleAddressSearch = async () => {
     try {
       const url = 'https://nominatim.openstreetmap.org/search';
@@ -30,14 +29,13 @@ const MapsModal = ({ modalVisible, closeModal, handleLocationSelect, selectedLoc
 
       if (response.data && response.data.length > 0) {
         const { lat, lon, display_name } = response.data[0];
-        
+
         setCurrentAddress(display_name);
-        
+
         const latitude = parseFloat(lat);
         const longitude = parseFloat(lon);
         setMarkerCoordinate({ latitude, longitude });
 
-        // Haritayı animasyonla ilgili koordinata kaydır
         mapRef.current?.animateToRegion(
           {
             latitude,
@@ -45,7 +43,7 @@ const MapsModal = ({ modalVisible, closeModal, handleLocationSelect, selectedLoc
             latitudeDelta: 0.01,
             longitudeDelta: 0.01,
           },
-          1000 
+          1000
         );
       } else {
         console.log('No results found from Nominatim.');
@@ -74,13 +72,13 @@ const MapsModal = ({ modalVisible, closeModal, handleLocationSelect, selectedLoc
     if (!markerCoordinate) {
       return;
     }
-    // 1) Ebeveyne seçilen konumu ilet
+
     handleLocationSelect({
       latitude: markerCoordinate.latitude,
       longitude: markerCoordinate.longitude,
-      address: currentAddress || 'Seçilen yerin adresi'
+      address: currentAddress || 'Selected location address',
     });
-    // 2) Sonraki kullanım için input ve adresi sıfırla
+
     setSearchQuery('');
     setCurrentAddress('');
     setMarkerCoordinate(null);
@@ -101,9 +99,7 @@ const MapsModal = ({ modalVisible, closeModal, handleLocationSelect, selectedLoc
             }}
             onPress={handleMapPress}
           >
-            {markerCoordinate && (
-              <Marker coordinate={markerCoordinate} />
-            )}
+            {markerCoordinate && <Marker coordinate={markerCoordinate} />}
           </MapView>
 
           <TextInput
@@ -114,23 +110,15 @@ const MapsModal = ({ modalVisible, closeModal, handleLocationSelect, selectedLoc
             onSubmitEditing={handleAddressSearch}
           />
 
-          <Text style={styles.currentAddress}>
-            Selected Address: {currentAddress}
-          </Text>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.confirmButton} onPress={onConfirmLocation}>
+              <Text style={styles.buttonText}>Select Location</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity
-            style={styles.confirmButton}
-            onPress={onConfirmLocation}
-          >
-            <Text style={styles.buttonText}>Select Location</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.closeButton}
-            onPress={closeModal}
-          >
-            <Text style={styles.buttonText}>Close</Text>
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.closeButton} onPress={closeModal}>
+              <Text style={styles.buttonText}>Close</Text>
+            </TouchableOpacity>
+          </View>
 
         </View>
       </View>

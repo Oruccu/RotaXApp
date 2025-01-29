@@ -20,5 +20,6 @@
 
   "selectLocationOnMap": "Select Location on Map",
   "planList": "Plan List",
-  "placeName":"Place Name"
+  "placeName":"Place Name",
+  "save":"Save"
 }

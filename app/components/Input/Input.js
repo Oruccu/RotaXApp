@@ -1,9 +1,9 @@
-import { View, TextInput } from 'react-native';
 import React from 'react';
+import { View, TextInput } from 'react-native';
 import { useSelector } from 'react-redux';
 import styles from './InputStyles';
 
-const Input = ({ onChange, placeholder, value, theme }) => {
+const Input = ({ onChangeText, placeholder, value, theme }) => {
   const mode = useSelector((state) => state.settings?.mode?.toLowerCase()) || 'light';
 
   const themeStyles = styles[theme]?.[mode] || styles.RotaX.light;
@@ -13,7 +13,7 @@ const Input = ({ onChange, placeholder, value, theme }) => {
     <View style={themeStyles.container}>
       <TextInput
         style={themeStyles.input}
-        onChangeText={onChange}
+        onChangeText={onChangeText}
         placeholder={placeholder}
         value={value}
         placeholderTextColor={placeholderColor}
