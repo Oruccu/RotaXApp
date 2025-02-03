@@ -5,11 +5,13 @@ import CustomImage from '@/app/components/AuthComponents/CustomImage'
 import Button from '@/app/components/Button'
 import { useFonts } from 'expo-font';
 
-export default function Intro() {
+export default function Intro({navigation}) {
   const [fontsLoaded] = useFonts({
     'MoonDance-Regular': require('@/app/assets/fonts/MoonDance-Regular.ttf'),
   });
-
+  function goToSingIn(){
+    navigation.navigate("singin");
+  }
   return (
     <View style={{ flex: 1 }}>
       <CustomImage />
@@ -26,7 +28,7 @@ export default function Intro() {
       <View style={{ padding: 20}}>
         <Button 
         ButtonName="Start Adventure" 
-        onPress={() => console.log('Button Pressed')} 
+        onPress={goToSingIn} 
         theme="Intro" />
       </View>
       </View>

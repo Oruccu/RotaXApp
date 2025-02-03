@@ -13,6 +13,8 @@ export default {
       padding: 12,
       fontSize:15,
       color:'white',
+      width:250,
+      textAlign:'center'
     },
   }),
   Day: StyleSheet.create({
