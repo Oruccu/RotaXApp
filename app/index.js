@@ -92,7 +92,7 @@ function MainTab() {
 
 function AuthStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown:false}}>
       <Stack.Screen name="intro" component={Intro} />
       <Stack.Screen name="singin" component={SingIn} />
       <Stack.Screen name="singup" component={SingUp} />
@@ -104,7 +104,7 @@ function AuthStack() {
 
 function RotaxStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown:false}}>
       <Stack.Screen name="rotaxedit" component={RotaxEdit} />
       <Stack.Screen name="rotaxmaps" component={RotaxMaps} />
       <Stack.Screen name="rotaxdetails" component={RotaxDetails} />
@@ -118,15 +118,14 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator>
-          {/* Main App Screens */}
-          <Stack.Screen
-            name="Main"
-            component={MainTab}
-            options={{ headerShown: false }}
-          />
           <Stack.Screen
             name="Auth"
             component={AuthStack}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Main"
+            component={MainTab}
             options={{ headerShown: false }}
           />
           <Stack.Screen

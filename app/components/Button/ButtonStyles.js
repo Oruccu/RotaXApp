@@ -1,9 +1,19 @@
 import Color from "@/app/styles/Color";
 import { StyleSheet } from "react-native";
+import { LightModeColors } from "../../styles/Color";
 
 export default {
-  Auth: StyleSheet.create({
-    // Add your Auth-specific styles here
+  Intro: StyleSheet.create({
+    container: {
+      margin: 2,
+      backgroundColor: LightModeColors.Primary, 
+      borderRadius:25,
+    },
+    button: {
+      padding: 12,
+      fontSize:15,
+      color:'white',
+    },
   }),
   Day: StyleSheet.create({
     container: {

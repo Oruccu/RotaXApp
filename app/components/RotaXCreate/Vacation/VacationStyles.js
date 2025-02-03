@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
 import Color, { DarkModeColors, LightModeColors } from "@/app/styles/Color";
 
-// Default export
 const getStyles = (mode) =>
   StyleSheet.create({
     container:{

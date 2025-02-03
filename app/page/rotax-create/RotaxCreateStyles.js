@@ -14,7 +14,7 @@ export default StyleSheet.create({
     marginVertical: 10,
     marginHorizontal: 10,
     padding: 10,
-    backgroundColor: Color.Primary, // Color.js dosyasından Primary rengi alır
+    backgroundColor: Color.Primary, 
     alignItems: 'center',
     borderRadius: 20,
     marginTop: 20,
@@ -39,4 +39,11 @@ export default StyleSheet.create({
   locationDayText: {
     fontWeight: 'bold',
   },
+  innerContainer:{
+    borderWidth:2,
+    flex:1,
+    margin:10,
+    borderColor:Color.Primary,
+    borderRadius:20,
+  }
 });

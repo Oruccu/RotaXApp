@@ -99,7 +99,7 @@ const RotaxCreate = () => {
     >
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={{ flex: 1 }}
+        style={styles.innerContainer}
       >
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
           <Title title={t('myRotaX')} />

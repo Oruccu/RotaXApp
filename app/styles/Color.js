@@ -13,11 +13,11 @@ const LightModeColors = {
   };
   
 const DarkModeColors = {
-  Primary: "#8AB4F8", // Sakinleştirici bir açık mavi, vurgular için zarif
-  Secondary: "#4CAF50", // Doğal bir yeşil, kontrast oluşturur
-  IconColor: "#B3B3B3", // Nötr açık gri, ikonlar için şık bir görünüm
-  Background: "#242A38", // Modern bir koyu mavi-gri tonu
-  TextColor: "#F5F5F7", // Hafif kırık beyaz, metinler için yumuşak kontrast
+  Primary: "#8AB4F8", 
+  Secondary: "#4CAF50", 
+  IconColor: "#B3B3B3", 
+  Background: "#242A38", 
+  TextColor: "#F5F5F7", 
 };
 
   
