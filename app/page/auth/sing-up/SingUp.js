@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-
+import CircleBanner from '../../../components/AuthComponents/CircleBanner'
 const SingUp = () => {
   return (
     <View>
-      <Text>SingUp</Text>
+      <CircleBanner CircleBannerTitle={'Sing Up'}/>
     </View>
   )
 }

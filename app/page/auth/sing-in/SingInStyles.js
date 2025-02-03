@@ -3,30 +3,24 @@ import { LightModeColors } from "../../../styles/Color";
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        position: 'relative',
+        flex: 1
     },
+    circleContainer: {
+        flex: 1
+    },
+    welcomeContainer: {
+        alignSelf: 'flex-start',
+        marginTop: 0,
+        padding: 10,
+        textAlign:'left'
+    },
+    innerContainer: {
+        flex: 1
+    },
+    kalan:{
+        flex:1,
+    }
 
-    circle1: {
-        width: 300,
-        height: 300,
-        borderRadius: 150,
-        backgroundColor: LightModeColors.IconColor,
-        position: 'absolute',
-        top: -30,
-        right: -70,
-        zIndex: 1,
-    },
-    circle2: {
-        width: 280,
-        height: 280,
-        borderRadius: 150,
-        backgroundColor: LightModeColors.Primary,
-        position: 'absolute',
-        top: -20,
-        right: -60,
-        zIndex: 2,
-    },
 });
 
 export default styles
