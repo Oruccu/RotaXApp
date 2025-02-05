@@ -1,5 +1,7 @@
 import { initializeApp, getApps } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
+import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCQvI4ayuao409-isEhGaVZ0tKqhe3JzZg",
@@ -18,4 +20,10 @@ if (!getApps().length) {
   firebaseApp = getApps()[0];
 }
 
+
 export const db = getFirestore(firebaseApp);
+
+
+export const auth = initializeAuth(firebaseApp, {
+  persistence: getReactNativePersistence(AsyncStorage),
+});

@@ -10,7 +10,7 @@ export default function Intro({navigation}) {
     'MoonDance-Regular': require('@/app/assets/fonts/MoonDance-Regular.ttf'),
   });
   function goToSingIn(){
-    navigation.navigate("singin");
+    navigation.navigate("signin");
   }
   return (
     <View style={{ flex: 1 }}>

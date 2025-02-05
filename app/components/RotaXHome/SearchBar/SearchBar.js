@@ -2,7 +2,7 @@ import { SafeAreaView, View, Text } from 'react-native'
 import React, { useState } from 'react'
 import Input from "@/app/components/Input"
 import IconImage from "@/app/components/Icons/IconImage"
-import IconAntDesing from "@/app/components/Icons/IconExpo/IconAntDesing"
+import IconAntDesign from "@/app/components/Icons/IconExpo/IconAntDesign.js"
 import styles from './SearchBarStyles'
 import Color from '@/app/styles/Color'
 const SearchBar = () => {
@@ -19,10 +19,10 @@ const SearchBar = () => {
       </View>
       <View style={styles.innerContainer}>
         <View style={styles.searchIcon}>
-          <IconAntDesing iconName="search1" color={Color.IconColor} />
+          <IconAntDesign iconName="search1" color={Color.IconColor} />
         </View>
         <View style={styles.bellIcon}>
-          <IconAntDesing iconName="bells" color={Color.IconColor} />
+          <IconAntDesign iconName="bells" color={Color.IconColor} />
         </View>
       </View>
     </View>

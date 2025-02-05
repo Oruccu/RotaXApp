@@ -10,15 +10,28 @@ const styles = StyleSheet.create({
     },
     welcomeContainer: {
         alignSelf: 'flex-start',
-        marginTop: 0,
+        marginTop: 50,
         padding: 10,
         textAlign:'left'
     },
     innerContainer: {
-        flex: 1
+        flex: 1,
+        marginBottom:50,
+        paddingHorizontal: 20,
+        marginVertical: 10,
     },
-    kalan:{
+    IconContainer:{
         flex:1,
+        flexDirection:'row',
+        justifyContent:'space-evenly',
+        alignItems:'center',
+
+    },
+    signUpButton:{
+        flex:1,
+        alignItems:'flex-end',
+        marginRight:20,
+        justifyContent:'flex-start'
     }
 
 });

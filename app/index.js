@@ -7,20 +7,20 @@ import store from "./hooks/Store";
 import { LightModeColors, DarkModeColors } from "@/app/styles/Color";
 import IconImage from "@/app/components/Icons/IconImage";
 
-//--------------Auth(Stack Navigation Screen)--------------
+//-------------- Auth (Stack Navigation Screens) --------------
 import Intro from "@/app/page/auth/intro";
-import SingIn from "@/app/page/auth/sing-in";
-import SingUp from "@/app/page/auth/sing-up";
+import SignIn from "@/app/page/auth/sign-in";
+import SignUp from "@/app/page/auth/sign-up";
 import ResetPassword from "@/app/page/auth/reset-password";
 import VerifyCode from "@/app/page/auth/verify-code";
 
-//--------------(Tab Navigation Screen)-------------------
+//-------------- Tab Navigation Screens -------------------
 import Home from "@/app/page/home";
 import RotaxCreate from "@/app/page/rotax-create";
 import RotaxUser from "@/app/page/rotax-user";
 import Settings from "@/app/page/settings";
 
-//--------------(Stack Navigation Screen)-------------------
+//-------------- Stack Navigation Screens -------------------
 import RotaxEdit from "@/app/page/rotax-edit";
 import RotaxDetails from "@/app/page/rotax-details";
 import RotaxMaps from "@/app/page/rotax-maps";
@@ -33,7 +33,7 @@ function MainTab() {
   const { mode } = useSelector((state) => state.settings);
   const [theme, setTheme] = useState(mode === "light" ? LightModeColors : DarkModeColors);
 
-  const TabbackgroundColor = mode === "Dark" ? DarkModeColors.Background : LightModeColors.Background;
+  const tabBackgroundColor = mode === "Dark" ? DarkModeColors.Background : LightModeColors.Background;
 
   return (
     <Tab.Navigator
@@ -42,7 +42,7 @@ function MainTab() {
         tabBarActiveTintColor: theme.Primary,
         tabBarInactiveTintColor: theme.IconColor,
         tabBarStyle: {
-          backgroundColor: TabbackgroundColor,
+          backgroundColor: tabBackgroundColor,
           height: 80,
           paddingTop: 10,
           paddingBottom: 5,
@@ -92,10 +92,10 @@ function MainTab() {
 
 function AuthStack() {
   return (
-    <Stack.Navigator screenOptions={{headerShown:false}}>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="intro" component={Intro} />
-      <Stack.Screen name="singin" component={SingIn} />
-      <Stack.Screen name="singup" component={SingUp} />
+      <Stack.Screen name="signin" component={SignIn} />
+      <Stack.Screen name="signup" component={SignUp} />
       <Stack.Screen name="resetpassword" component={ResetPassword} />
       <Stack.Screen name="verifycode" component={VerifyCode} />
     </Stack.Navigator>
@@ -104,7 +104,7 @@ function AuthStack() {
 
 function RotaxStack() {
   return (
-    <Stack.Navigator screenOptions={{headerShown:false}}>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="rotaxedit" component={RotaxEdit} />
       <Stack.Screen name="rotaxmaps" component={RotaxMaps} />
       <Stack.Screen name="rotaxdetails" component={RotaxDetails} />

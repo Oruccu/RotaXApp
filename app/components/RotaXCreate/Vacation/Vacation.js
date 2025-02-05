@@ -3,7 +3,6 @@ import React from 'react'
 import getStyles from "./VacationStyles";
 import { useTranslation } from "react-i18next";
 import { useSelector } from 'react-redux';
-import Input from '../../Input';
 import IconMaterialCommunity from '../../Icons/IconExpo/IconMaterialCommunity';
 import Color from '@/app/styles/Color';
 const Vacation = ({ vacationDay, hangleTouchMaps }) => {

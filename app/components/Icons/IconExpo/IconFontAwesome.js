@@ -1,14 +1,16 @@
 import React from 'react'
 import { FontAwesome } from '@expo/vector-icons'
+import { TouchableOpacity } from 'react-native'
 
-const IconFontAwesome = ({iconName , color}) => {
+const IconFontAwesome = ({ iconName, color, onPress }) => {
   return (
-    <FontAwesome
-      name={iconName}
-      color={color}
-      size={38}
-
-    />
+    <TouchableOpacity onPress={onPress}>
+      <FontAwesome
+        name={iconName}
+        color={color}
+        size={55}
+      />
+    </TouchableOpacity>
   )
 }
 
