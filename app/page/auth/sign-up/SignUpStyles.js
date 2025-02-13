@@ -6,34 +6,43 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   circleContainer: {
-    flex: 1,
+    height: 200,
   },
   welcomeContainer: {
     alignSelf: 'flex-start',
-    marginTop: 50,
+    marginTop: 10,
     padding: 10,
     textAlign: 'left',
   },
   innerContainer: {
     flex: 1,
-    marginBottom: 50,
+    marginBottom: 20,
   },
   inputContainer: {
     paddingHorizontal: 20,
     marginVertical: 10,
-    marginBottom:20,
+    marginBottom: 20,
+  },
+  bottomContainer: {
+    paddingHorizontal: 20,
+    marginBottom: 50,
   },
   IconContainer: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
+    marginBottom: 2,
   },
   signUpButton: {
-    flex: 1,
-    alignItems: 'flex-end',
+    alignSelf: 'flex-end',
     marginRight: 20,
-    justifyContent: 'flex-start',
+  },
+  errorText: {
+    color: 'red',
+    fontSize: 12,
+    marginTop: 4,
+    marginBottom: 4,
+    marginLeft:20,
   },
 });
 

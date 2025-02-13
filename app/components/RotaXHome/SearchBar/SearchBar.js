@@ -19,10 +19,16 @@ const SearchBar = () => {
       </View>
       <View style={styles.innerContainer}>
         <View style={styles.searchIcon}>
-          <IconAntDesign iconName="search1" color={Color.IconColor} />
+          <IconAntDesign 
+          iconName="search1" 
+          color={Color.IconColor} 
+          size={30}/>
         </View>
         <View style={styles.bellIcon}>
-          <IconAntDesign iconName="bells" color={Color.IconColor} />
+          <IconAntDesign 
+          iconName="bells" 
+          color={Color.IconColor} 
+          size={30}/>
         </View>
       </View>
     </View>

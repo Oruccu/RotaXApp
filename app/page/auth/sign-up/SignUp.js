@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { View, TouchableOpacity, Alert, Text } from 'react-native';
+import { Formik } from 'formik';
 import styles from './SignUpStyles';
 import CircleBanner from '@/app/components/AuthComponents/CircleBanner';
 import WelcomeBanner from '@/app/components/AuthComponents/WelcomeBanner';
@@ -8,47 +9,42 @@ import Button from '@/app/components/Button';
 import IconAntDesign from '@/app/components/Icons/IconExpo/IconAntDesign';
 import IconMaterialCommunity from '@/app/components/Icons/IconExpo/IconMaterialCommunity';
 import { LightModeColors } from '../../../styles/Color';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithCredential  } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/app/config/firebase.js';
-import * as Google from 'expo-auth-session/providers/google';
+import * as Yup from 'yup';
+
+const SignUpSchema = Yup.object().shape({
+  username: Yup.string().required('Kullanıcı adı gerekli'),
+  email: Yup.string()
+    .email('Geçerli bir e-posta girin')
+    .required('E-posta gerekli'),
+  password: Yup.string()
+    .min(6, 'Şifre en az 6 karakter olmalı')
+    .required('Şifre gerekli'),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password'), null], 'Şifreler eşleşmiyor')
+    .required('Şifre doğrulaması gerekli'),
+});
 
 const SignUp = ({ navigation }) => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail]     = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-
-  const handleSignUp = async () => {
+  const handleSignUp = async (values) => {
     try {
+      const { username, email, password } = values;
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       console.log("Kayıt başarılı:", userCredential.user);
+      navigation.navigate('Main');
     } catch (error) {
       console.error("Kayıt hatası:", error);
+      Alert.alert('Hata', error.message);
     }
   };
 
   const goToSignIn = () => {
-    navigation.navigate('signin'); 
+    navigation.navigate('signin');
   };
 
   const handleGoogleSignUp = async () => {
-    try {
-      const { type, idToken } = await Google.logInAsync({
-        clientId: '<YOUR_GOOGLE_CLIENT_ID>',
 
-      });
-  
-      if (type === 'success' && idToken) {
-        const credential = GoogleAuthProvider.credential(idToken);
-        const userCredential = await signInWithCredential(auth, credential);
-        console.log("Google ile oturum açıldı:", userCredential.user);
-      } else {
-
-        console.log("Google oturum açma iptal edildi");
-      }
-    } catch (error) {
-      console.error("Google oturum açma hatası:", error);
-    }
   };
 
   const handleAppleSignUp = () => {
@@ -67,68 +63,109 @@ const SignUp = ({ navigation }) => {
       <View style={styles.welcomeContainer}>
         <WelcomeBanner />
       </View>
-      <View style={styles.innerContainer}>
-        <View style={styles.inputContainer}>
-          <Input
-            onChangeText={setUsername}
-            placeholder="Username"
-            value={username}
-            theme="Auth"
-          />
-          <Input
-            onChangeText={setEmail}
-            placeholder="Email"
-            value={email}
-            theme="Auth"
-          />
-          <Input
-            onChangeText={setPassword}
-            placeholder="Password"
-            value={password}
-            theme="Auth"
-            secureTextEntry={true}
-          />
-          <Input
-            onChangeText={setConfirmPassword}
-            placeholder="Confirm Password"
-            value={confirmPassword}
-            theme="Auth"
-            secureTextEntry={true}
-          />
-        </View>
-        <Button
-          ButtonName="Sign Up"
-          onPress={handleSignUp}
-          theme="Auth"
-        />
-      </View>
-      <View style={styles.IconContainer}>
-        <TouchableOpacity onPress={handleGoogleSignUp}>
-          <IconAntDesign
-            iconName={'google'}
-            color={LightModeColors.IconColor}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={handleAppleSignUp}>
-          <IconAntDesign
-            iconName={'apple1'}
-            color={LightModeColors.IconColor}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={handleFacebookSignUp}>
-          <IconMaterialCommunity
-            iconName={'facebook'}
-            color={LightModeColors.IconColor}
-          />
-        </TouchableOpacity>
-      </View>
-      <View style={styles.signUpButton}>
-        <IconMaterialCommunity
-          iconName={'arrow-right-thin-circle-outline'}
-          color={LightModeColors.Primary}
-          onPress={goToSignIn}
-        />
-      </View>
+
+      <Formik
+        initialValues={{
+          username: '',
+          email: '',
+          password: '',
+          confirmPassword: '',
+        }}
+        validationSchema={SignUpSchema}
+        onSubmit={handleSignUp}
+      >
+        {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
+          <>
+            <View style={styles.innerContainer}>
+              <View style={styles.inputContainer}>
+                <Input
+                  onChangeText={handleChange('username')}
+                  onBlur={handleBlur('username')}
+                  placeholder="Username"
+                  value={values.username}
+                  theme="Auth"
+                />
+                {touched.username && errors.username && (
+                  <Text style={styles.errorText}>{errors.username}</Text>
+                )}
+
+                <Input
+                  onChangeText={handleChange('email')}
+                  onBlur={handleBlur('email')}
+                  placeholder="Email"
+                  value={values.email}
+                  theme="Auth"
+                  autoCapitalize="none"
+                />
+                {touched.email && errors.email && (
+                  <Text style={styles.errorText}>{errors.email}</Text>
+                )}
+
+                <Input
+                  onChangeText={handleChange('password')}
+                  onBlur={handleBlur('password')}
+                  placeholder="Password"
+                  value={values.password}
+                  theme="Auth"
+                  secureTextEntry={true}
+                />
+                {touched.password && errors.password && (
+                  <Text style={styles.errorText}>{errors.password}</Text>
+                )}
+
+                <Input
+                  onChangeText={handleChange('confirmPassword')}
+                  onBlur={handleBlur('confirmPassword')}
+                  placeholder="Confirm Password"
+                  value={values.confirmPassword}
+                  theme="Auth"
+                  secureTextEntry={true}
+                />
+                {touched.confirmPassword && errors.confirmPassword && (
+                  <Text style={styles.errorText}>{errors.confirmPassword}</Text>
+                )}
+              </View>
+              <Button
+                ButtonName="Sign Up"
+                onPress={handleSubmit}
+                theme="Auth"
+              />
+            </View>
+
+            <View style={styles.bottomContainer}>
+              <View style={styles.IconContainer}>
+                <TouchableOpacity onPress={handleGoogleSignUp}>
+                  <IconAntDesign
+                    iconName={'google'}
+                    color={LightModeColors.IconColor}
+                    size={50}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={handleAppleSignUp}>
+                  <IconAntDesign
+                    iconName={'apple1'}
+                    color={LightModeColors.IconColor}
+                    size={50}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={handleFacebookSignUp}>
+                  <IconMaterialCommunity
+                    iconName={'facebook'}
+                    color={LightModeColors.IconColor}
+                  />
+                </TouchableOpacity>
+              </View>
+              <View style={styles.signUpButton}>
+                <IconMaterialCommunity
+                  iconName={'arrow-right-thin-circle-outline'}
+                  color={LightModeColors.Primary}
+                  onPress={goToSignIn}
+                />
+              </View>
+            </View>
+          </>
+        )}
+      </Formik>
     </View>
   );
 };

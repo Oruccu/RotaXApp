@@ -17,8 +17,10 @@ const Category = () => {
   const renderItem = ({ item }) => (
     <TouchableOpacity style={styles.itemContainer}>
       <View style={styles.container}>
-        <IconImage icon={item.icon} theme="Category" />1
-        <Text style={styles.name}>{item.name}</Text>
+        <IconImage icon={item.icon} theme="Category" />
+        <View>
+          <Text style={styles.name}>{item.name}</Text>
+        </View>
       </View>
     </TouchableOpacity>
   );

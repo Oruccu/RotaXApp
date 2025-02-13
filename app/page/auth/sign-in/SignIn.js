@@ -8,13 +8,22 @@ import Button from '@/app/components/Button';
 import IconAntDesign from '@/app/components/Icons/IconExpo/IconAntDesign';
 import IconMaterialCommunity from '@/app/components/Icons/IconExpo/IconMaterialCommunity';
 import { LightModeColors } from '../../../styles/Color';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '@/app/config/firebase'; 
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignIn = () => {
-
+  const handleSignIn = async () => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password); 
+      const user = userCredential.user;
+      console.log('Giriş başarılı:', user);
+      navigation.navigate('Main');
+    } catch (error) {
+      console.error('Giriş hatası:', error);
+    }
   };
 
   const forgotPassword = () => {
@@ -48,10 +57,11 @@ const SignIn = ({ navigation }) => {
       <View style={styles.innerContainer}>
         <View style={styles.inputContainer}>
           <Input
-            onChangeText={setEmail}
+            onChangeText={(text) => setEmail(text.toLowerCase())}
             placeholder="Email"
             value={email}
             theme="Auth"
+            autoCapitalize="none"
           />
           <Input
             onChangeText={setPassword}
@@ -59,6 +69,7 @@ const SignIn = ({ navigation }) => {
             value={password}
             theme="Auth"
             secureTextEntry={true}
+            autoCapitalize="none"
           />
         </View>
         <View style={styles.forgotPassContainer}>
@@ -79,12 +90,14 @@ const SignIn = ({ navigation }) => {
           <IconAntDesign
             iconName={'google'}
             color={LightModeColors.IconColor}
+            size={50}
           />
         </TouchableOpacity>
         <TouchableOpacity onPress={handleAppleSignIn}>
           <IconAntDesign
             iconName={'apple1'}
             color={LightModeColors.IconColor}
+            size={50}
           />
         </TouchableOpacity>
         <TouchableOpacity onPress={handleFacebookSignIn}>
